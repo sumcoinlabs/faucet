@@ -60,12 +60,12 @@ class FaucetForm extends Component {
               className="form-control form-control-md"
               name="addressInput"
               style={{ marginTop: "15px" }}
-              placeholder="Enter testnet address"
+              placeholder="Enter Sumcoin address"
               value={data["addressInput"] || ""}
               onChange={(e) => this.handleChange(e)}
             />
             <small className="form-text text-muted">
-              Current Payout is <b>10</b> Testnet PPC.
+              Current Payout varies, currently <b>"0.00001"</b> SUM.
             </small>
           </div>
         </div>
@@ -74,7 +74,7 @@ class FaucetForm extends Component {
           style={{ display: "inline-block", margin: "15px" }}
         >
           <HCaptcha
-            sitekey="9883ec3c-45e5-4fa7-9861-e85cfb1afdb5"
+            sitekey="8231157b-b8d7-4273-87dc-5c836e422274"
             ref={this.hCaptchaRef}
             onVerify={(e) => this.props.raiseCaptcha(e)}
           />

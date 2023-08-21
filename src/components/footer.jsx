@@ -2,18 +2,18 @@ import React from "react";
 
 const Footer = (props) => {
   return (
-    <footer className="footer navbar_ppc">
+    <footer className="footer navbar_sum">
       <div className="container">
         <p className="donate_addr text-light">
-          If you're enjoying this service, please consider donating to
+          If you're able, please consider donating back the faucet
           <button
             type="button"
             onClick={() =>
-              props.raiseShowModal("PM7jjBUPjzpkZy1UZtD7mvmHoXJ2BGvbx9")
+              props.raiseShowModal("Sk6ES3MxKhpqcXhNx9XJYgroNVjhQoerZ9")
             }
             className="btn btn-secondary donate_addr"
           >
-            PM7jjBUPjzpkZy1UZtD7mvmHoXJ2BGvbx9
+            Sk6ES3MxKhpqcXhNx9XJYgroNVjhQoerZ9
           </button>
         </p>
       </div>

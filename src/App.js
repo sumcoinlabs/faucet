@@ -23,7 +23,7 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    const { data } = await http.get("https://faucet-core.peercoinexplorer.net/serveStats.php");
+    const { data } = await http.get("https://sumcoinindex.com/faucet/serveStats.php");
     this.setState({ statsData: data });
     Sentry.init({
       dsn: "https://6de3fe5c0cec4d65b27e419323bc6bdb@sentry.io/1457672"
@@ -56,7 +56,7 @@ class App extends Component {
     let txID = "";
 
     if (data && hCaptcha) {
-      const response = await http.post("https://faucet-core.peercoinexplorer.net/backend.php", {
+      const response = await http.post("https://sumcoinindex.com/faucet/backend.php", {
         "h-captcha-response": hCaptcha,
         address: data
       });
@@ -66,8 +66,8 @@ class App extends Component {
         txID = response.data.txid;
       } else if (response.data.message) {
         message = response.data.message;
-        if (message === "Unable to connect to http://localhost:9904") {
-          message = "Unable to connect to peercoind. Please retry later.";
+        if (message === "Unable to connect to http @ Port") {
+          message = "Unable to connect to sumcoin service. Please retry later.";
         }
       }
     } else {
@@ -118,13 +118,14 @@ class App extends Component {
               </div>
             )}
             <header>
-              <div className="navbar_ppc navbar-dark shadow-sm">
+              <div className="navbar_sum navbar-dark shadow-sm">
                 <div className="container d-flex justify-content-between">
                   <img
                     className="logo"
                     style={{ maxWidth: "100vw", margin: 10 }}
-                    src="https://peercoinexplorer.net/peercoin-horizontal-greenleaf-whitetext-transparent.svg"
-                    alt="Peercoin Logo"
+//                    src="https://peercoinexplorer.net/peercoin-horizontal-greenleaf-whitetext-transparent.svg" // 670 x 80
+                    src="https://" // 670 x 80
+                    alt="Sumcoin Logo"
                   />
                 </div>
               </div>
@@ -137,7 +138,7 @@ class App extends Component {
                     hideModal={this.hideModal}
                     modalAddr={modalAddr}
                   />
-                  <h1 className="jumbotron-heading">Peercoin Testnet Faucet</h1>
+                  <h1 className="jumbotron-heading">Sumcoin Faucet</h1>
                   <hr />
                   <div className="row">
                     <div className="col-md-6 faucetForm">
@@ -153,7 +154,7 @@ class App extends Component {
                           style={{ marginTop: "10px", wordWrap: "break-word" }}
                         >
                           <b>
-                            10 tPPC have been paid out to{" "}
+                            0.00001 SUM have been paid out to{" "}
                             <span className="donate_addr">{address}</span>
                             <br />
                             Transaction ID:
@@ -182,25 +183,26 @@ class App extends Component {
                     style={{ margin: "10px auto" }}
                     role="alert"
                   >
-                    Please send unused coins back to{" "}
+                    Thanks for checking out the faucet!{" "}
                     <button
                       type="button"
                       onClick={() =>
-                        this.showModal("n4pJDAqsagWbouT7G7xRH8548s9pZpQwtG")
+                        this.showModal("SumcoinIndex") // was an address
                       }
                       className="btn donate_addr"
                     >
-                      n4pJDAqsagWbouT7G7xRH8548s9pZpQwtG
+                    //  n4pJDAqsagWbouT7G7xRH8548s9pZpQwtG
+                      SumcoinIndex
                     </button>
                   </div>
                 </div>
                 <div style={{ marginBottom: "2.5rem" }}>
                   <GitHubButton
-                    href="https://github.com/bananenwilly/peercoinexplorer.net-faucet/issues"
+                    href="https://github.com/sumcoinlabs/sumcoin-faucet/issues"
                     data-icon="octicon-issue-opened"
                     data-size="large"
                     data-show-count="true"
-                    aria-label="Issue bananenwilly/peercoinexplorer.net-faucet on GitHub"
+                    aria-label="Issue sumcoinlabs/sumcoin-faucet/ on GitHub"
                   >
                     Issue
                   </GitHubButton>

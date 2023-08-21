@@ -16,7 +16,7 @@ const Stats = props => {
             <td>
               <b>Coins available:</b>
             </td>
-            <td>{Math.round(balance)} tPPC</td>
+            <td>{Math.round(balance)} SUM</td>
           </tr>
           <tr>
             <td>
@@ -28,13 +28,13 @@ const Stats = props => {
             <td>
               <b>Paid out last 7 days:</b>
             </td>
-            <td>{weeklyPayout} tPPC</td>
+            <td>{weeklyPayout} SUM</td>
           </tr>
           <tr>
             <td>
               <b>Paid out since launch:</b>
             </td>
-            <td>{totalPayout} tPPC</td>
+            <td>{totalPayout} SUM</td>
           </tr>
         </tbody>
       </table>

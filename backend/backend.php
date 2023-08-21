@@ -3,7 +3,7 @@ require_once("jsonRPCClient.php");
 require_once("config.php");
 
 # cors
-header('Access-Control-Allow-Origin: "https://faucet.peercoinexplorer.net"');
+header('Access-Control-Allow-Origin: "https://sumcoinindex.com/faucet"');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 
@@ -38,11 +38,11 @@ $responseData = json_decode($response);
 if($responseData->success) {
   #captcha is verified
   $success = true;
-  $amount = 10;
+  $amount = 0.00001;
   $address = $_POST["address"];
 
   try {
-      $txid = $peercoin->sendtoaddress($address, $amount);
+      $txid = $sumcoin->sendtoaddress($address, $amount);
       $time = time();
 
       //mysql
@@ -53,7 +53,7 @@ if($responseData->success) {
       $query = "INSERT INTO transactions (address, amount, txid, time) VALUES ('$address', '$amount', '$txid', $time)";
       $mysqli->query($query);
 
-      //return 
+      //return
       echo json_encode(array("result" => $success, "address" => $_POST["address"], "txid" => $txid));
   } catch (Exception $e) {
       $result = $e->getMessage();

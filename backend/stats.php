@@ -13,7 +13,7 @@ if ($mysqli->connect_errno) {
 $balance = 0;
 
 try {
-    $response = $peercoin->getwalletinfo();
+    $response = $sumcoin->getwalletinfo();
     if (array_key_exists("balance", $response)) {
         $balance = $response["balance"];
     }
@@ -22,6 +22,6 @@ try {
     echo $result;
 }
 
-//update balance 
+//update balance
 $query = "UPDATE `info` SET `balance` = $balance";
 $result = $mysqli->query($query);
